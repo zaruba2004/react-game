@@ -1,0 +1,39 @@
+.playingField {
+    width: 400px;
+    min-height: 500px;
+    background-color: rgb(36, 65, 7);
+    
+}
+
+.cardsField{
+    width: 360px;
+    height: 400px;
+    padding: 20px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    float: left; 
+    width: 120px;
+    height: 60px;
+}
+
+img {
+    width: 119px;
+}
+
+.buttonsField{
+    padding: 0 20px;
+}
+
+button {
+    background-color: chocolate;
+    width: 110px;
+    padding: 5px; 
+    margin: 0 5px;
+}

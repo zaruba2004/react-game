@@ -1,0 +1,14 @@
+.App{
+    display: flex;
+    justify-content: center;
+    color: blanchedalmond;
+    min-width: 500px;
+}
+
+h1{
+    text-align: center;
+}
+
+p{
+    width: 400px;
+}
