@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './mainGame.css';
 
 export default function MainGame() {
-    const cards = [
+    const [cards, setCards] = React.useState([
         {id: 1, imageURL: './images/QH.png', title: "QH"},
         {id: 2, imageURL: './images/QS.png', title: "QS"},
-        {id: 3, imageURL: './images/QC.png', title: "QC"},
-        {id: 4, imageURL: './images/10H.png', title: "10H"},
+        {id: 4, imageURL: './images/QC.png', title: "QC"},
+        {id: 3, imageURL: './images/10H.png', title: "10H"},
         {id: 5, imageURL: './images/10D.png', title: "10D"},
         {id: 6, imageURL: './images/10S.png', title: "10S"},
         {id: 7, imageURL: './images/AD.png', title: "AD"},
@@ -18,23 +18,83 @@ export default function MainGame() {
         {id: 13, imageURL: './images/KC.png', title: "KC"},
         {id: 14, imageURL: './images/KH.png', title: "KH"},
         {id: 15, imageURL: './images/KS.png', title: "KS"}
-      ]
+      ])
+      
+      function clickOneButton(arr){  
+        let a = [];
+        let b = [];
+        let c = [];
+        for (let i = 0; i < arr.length; i=i+3) {
+            a.push(arr[i])            
+        }
+        for (let i = 1; i < arr.length; i=i+3) {            
+            b.push(arr[i])           
+        }
+        for (let i = 2; i < arr.length; i=i+3) {
+            c.push(arr[i])            
+        }
+        setCards(arr = []);
+        arr.push(...b);
+        arr.push(...a);
+        arr.push(...c);
+        return arr;
+      }
 
+      function clickTwoButton(arr){  
+        let a = [];
+        let b = [];
+        let c = [];
+        for (let i = 0; i < arr.length; i=i+3) {
+            a.push(arr[i])            
+        }
+        for (let i = 1; i < arr.length; i=i+3) {            
+            b.push(arr[i])           
+        }
+        for (let i = 2; i < arr.length; i=i+3) {
+            c.push(arr[i])            
+        }
+        setCards(arr = []);
+        arr.push(...a);
+        arr.push(...b);
+        arr.push(...c);
+        return arr;
+      }
 
+      function clickTreeButton(arr){  
+        let a = [];
+        let b = [];
+        let c = [];
+        for (let i = 0; i < arr.length; i=i+3) {
+            a.push(arr[i])            
+        }
+        for (let i = 1; i < arr.length; i=i+3) {            
+            b.push(arr[i])           
+        }
+        for (let i = 2; i < arr.length; i=i+3) {
+            c.push(arr[i])            
+        }
+        setCards(arr = []);
+        arr.push(...a);
+        arr.push(...c);
+        arr.push(...b);
+        return arr;
+      }
 
     return (
         <div className="playingField">
             <div className="cardsField">  
                 <ul>
-                    {cards.map(card => {
+                    {cards.map(card => {    /*.sort((prev,next)=>prev.id - next.id)*/
                         return <li key={card.id}><img src={card.imageURL} alt={card.title} /></li>
                     })}
                 </ul> 
             </div>
             <div className="buttonsField">
-                <button onClick={()=>alert('Придумать функцию')}>Карта в этой коллоде</button>
-                <button onClick={()=>alert('Придумать функцию')}>Карта в этой коллоде</button>
-                <button onClick={()=>alert('Придумать функцию')}>Карта в этой коллоде</button>
+                <div className="startButtonsField">
+                <button onClick={()=>setCards(clickOneButton(cards))}>Карта в этой коллоде</button>
+                <button onClick={()=>setCards(clickTwoButton(cards))}>Карта в этой коллоде</button>
+                <button onClick={()=>setCards(clickTreeButton(cards))}>Карта в этой коллоде</button>
+                </div>
             </div>  
         </div>       
     )
