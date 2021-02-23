@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './mainGame.css';
+import Modal from "./modal";
 
 export default function MainGame() {
     const [cards, setCards] = React.useState([
@@ -95,6 +96,7 @@ export default function MainGame() {
                 <button onClick={()=>setCards(clickTwoButton(cards))}>Карта в этой коллоде</button>
                 <button onClick={()=>setCards(clickTreeButton(cards))}>Карта в этой коллоде</button>
                 </div>
+                <Modal imageURL={cards[7].imageURL} altImage={cards[7].title}/>
             </div>  
         </div>       
     )
