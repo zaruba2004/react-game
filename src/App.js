@@ -16,7 +16,9 @@ function App() {
         <div className='rulesFeald'>
         <p>
           {
-            newCounter > 0
+            newCounter == 1
+            ? "Нажми еще раз"
+            : newCounter == 2
             ? "Нажми еще раз"
             : newCounter == 3
             ? "Нажми на кнопку ответ"

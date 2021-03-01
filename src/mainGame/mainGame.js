@@ -86,6 +86,11 @@ export default function MainGame(props) {
         setState({isOpenModal: false, isOpenButton: true, isOpenButtons: false, });        
       }
 
+      function answeButton(){
+        setState({isOpenModal: true});
+        props.counters(counter);
+      }
+
     return (
         <div className="playingField">
             <div className="cardsField">  
@@ -103,7 +108,7 @@ export default function MainGame(props) {
                 </div>)}
                 {/* <Modal imageURL={cards[7].imageURL} altImage={cards[7].title}  /> */}
                 <div>
-                    {state.isOpenButton && <button className='buttonAnswer' onClick={()=>setState({isOpenModal: true})}>Ответ</button>}
+                    {state.isOpenButton && <button className='buttonAnswer' onClick={()=>answeButton()}>Ответ</button>}
                     {state.isOpenModal && (<div className='modal'>
                         <div className='modal-body'>
                             <h1>Это ваша карта?</h1>
