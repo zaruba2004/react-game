@@ -37,5 +37,18 @@ button {
     width: 110px;
     padding: 5px; 
     margin: 0 5px;
+    border-radius: 5px;
 }
 
+button:hover {
+    background-color: rgb(241, 156, 81);    
+}
+
+.buttonAnswer{
+    width: 350px;
+    height: 43px;    
+}
+
+.restartButton {
+    width: 180px;
+}
