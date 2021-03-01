@@ -7,6 +7,7 @@ function App() {
   function callback(id){ 
      sethz(id);
   } 
+  
   console.log(hz);  
   
   
