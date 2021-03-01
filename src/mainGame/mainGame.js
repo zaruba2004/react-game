@@ -3,7 +3,7 @@ import './mainGame.css';
 // import Modal from "./modal";
 import './modal.css';
 
-export default function MainGame() {
+export default function MainGame(props) {
     const [cards, setCards] = React.useState([
         {id: 1, imageURL: './images/QH.png', title: "QH"},
         {id: 2, imageURL: './images/QS.png', title: "QS"},
@@ -23,9 +23,13 @@ export default function MainGame() {
       ])
 
       const [counter, setCounter] = useState(0);
+      const [state, setState] = useState (    /* temp modal */
+        {isOpenModal: false, isOpenButton: false, isOpenButtons: true}
+    )
       
       function clickOneButton(arr){  
-        setCounter(counter + 1);  
+        setCounter(counter + 1);
+        props.counters(counter+1); 
         let a = [];
         let b = [];
         let c = [];
@@ -43,6 +47,7 @@ export default function MainGame() {
 
       function clickTwoButton(arr){  
         setCounter(counter + 1);
+        props.counters(counter+1);
         let a = [];
         let b = [];
         let c = [];
@@ -60,6 +65,7 @@ export default function MainGame() {
 
       function clickTreeButton(arr){ 
         setCounter(counter + 1); 
+        props.counters(counter+1);
         let a = [];
         let b = [];
         let c = [];
@@ -73,13 +79,7 @@ export default function MainGame() {
         arr.push(...c);
         arr.push(...b);
         return arr;
-      }    
-    
-
-      const [state, setState] = useState (    /* temp modal */
-        {isOpenModal: false, isOpenButton: false, isOpenButtons: true}
-    )
-
+      } 
 
       if(counter==3){
         setCounter(0);
@@ -103,12 +103,12 @@ export default function MainGame() {
                 </div>)}
                 {/* <Modal imageURL={cards[7].imageURL} altImage={cards[7].title}  /> */}
                 <div>
-                    {state.isOpenButton && <button onClick={()=>setState({isOpenModal: true})}>Ответ</button>}
+                    {state.isOpenButton && <button className='buttonAnswer' onClick={()=>setState({isOpenModal: true})}>Ответ</button>}
                     {state.isOpenModal && (<div className='modal'>
                         <div className='modal-body'>
                             <h1>Это ваша карта?</h1>
                             <img className='ansverCard' src={cards[7].imageURL} alt={cards[7].title} />
-                            <button onClick={()=>setState({isOpenModal: false, isOpenButton: false, isOpenButtons: true})}>Играть заново</button>
+                            <button className='restartButton' onClick={()=>setState({isOpenModal: false, isOpenButton: false, isOpenButtons: true})}>Да, попробовать заново</button>
                         </div>            
                     </div>)}
                 </div>
