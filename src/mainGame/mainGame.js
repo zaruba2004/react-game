@@ -114,9 +114,9 @@ export default function MainGame(props) {
             </div>
             <div className="buttonsField">
                 {state.isOpenButtons && (<div className="startButtonsField">
-                    <button onClick={()=>setCards(clickOneButton(cards))}>Карта в этой коллоде</button>
-                    <button onClick={()=>setCards(clickTwoButton(cards))}>Карта в этой коллоде</button>
-                    <button onClick={()=>setCards(clickTreeButton(cards))}>Карта в этой коллоде</button>                    
+                    <button onClick={()=>setCards(clickOneButton(cards))}>Карта в этой колоде</button>
+                    <button onClick={()=>setCards(clickTwoButton(cards))}>Карта в этой колоде</button>
+                    <button onClick={()=>setCards(clickTreeButton(cards))}>Карта в этой колоде</button>                    
                 </div>)}
                 <div>
                     {state.isOpenButton && <button className='buttonAnswer' onClick={()=>answeButton()}>Ответ</button>}
