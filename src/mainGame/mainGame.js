@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './mainGame.css';
-// import Modal from "./modal";
 import './modal.css';
+import CardAnswerSound from '../sounds/answer.mp3';
+import CardClickSound from '../sounds/clickCard.mp3';
+import {Howl, Howler} from 'howler';
 
 export default function MainGame(props) {
     const [cards, setCards] = React.useState([
@@ -21,13 +23,20 @@ export default function MainGame(props) {
         {id: 14, imageURL: './images/KH.png', title: "KH"},
         {id: 15, imageURL: './images/KS.png', title: "KS"}
       ])
+      function soundPlay(src){
+        const sound = new Howl({
+            src
+          });
+          sound.play() ;
+      };
 
       const [counter, setCounter] = useState(0);
-      const [state, setState] = useState (    /* temp modal */
+      const [state, setState] = useState (    
         {isOpenModal: false, isOpenButton: false, isOpenButtons: true}
     )
       
-      function clickOneButton(arr){  
+      function clickOneButton(arr){ 
+        soundPlay(CardClickSound); 
         setCounter(counter + 1);
         props.counters(counter+1); 
         let a = [];
@@ -45,7 +54,8 @@ export default function MainGame(props) {
         return arr;
       }
 
-      function clickTwoButton(arr){  
+      function clickTwoButton(arr){ 
+        soundPlay(CardClickSound); 
         setCounter(counter + 1);
         props.counters(counter+1);
         let a = [];
@@ -64,6 +74,7 @@ export default function MainGame(props) {
       }
 
       function clickTreeButton(arr){ 
+        soundPlay(CardClickSound);  
         setCounter(counter + 1); 
         props.counters(counter+1);
         let a = [];
@@ -89,6 +100,7 @@ export default function MainGame(props) {
       function answeButton(){
         setState({isOpenModal: true});
         props.counters(counter);
+        soundPlay(CardAnswerSound);
       }
 
     return (
@@ -106,7 +118,6 @@ export default function MainGame(props) {
                     <button onClick={()=>setCards(clickTwoButton(cards))}>Карта в этой коллоде</button>
                     <button onClick={()=>setCards(clickTreeButton(cards))}>Карта в этой коллоде</button>                    
                 </div>)}
-                {/* <Modal imageURL={cards[7].imageURL} altImage={cards[7].title}  /> */}
                 <div>
                     {state.isOpenButton && <button className='buttonAnswer' onClick={()=>answeButton()}>Ответ</button>}
                     {state.isOpenModal && (<div className='modal'>
