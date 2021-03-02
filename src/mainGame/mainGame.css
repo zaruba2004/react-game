@@ -38,8 +38,11 @@ li{
   }
 
 img {
-    width: 119px;    
-    animation: menu6 0.3s ease-in-out forwards;
+    width: 119px;
+}
+
+.modal-body img{        
+    animation: menu6 0.5s ease-in-out forwards;
 }
 
 .buttonsField{
@@ -52,13 +55,16 @@ button {
     width: 110px;
     padding: 5px; 
     margin: 0 5px;
-    border-radius: 5px; 
-    box-shadow: 5px 5px 5px ;   
+    border-radius: 5px;     
+    transition: all 0.7s ease 0s;
+    outline: none;  
 }
 
 button:hover {
     background-color: rgb(241, 156, 81);
-    transition-duration: 0.7s;    
+    box-shadow: 5px 5px 5px ;
+    transition: all 0.5s ease 0s;
+
 }
 
 .buttonAnswer{
