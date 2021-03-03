@@ -107,7 +107,7 @@ export default function MainGame(props) {
         <div className="playingField">
             <div className="cardsField">  
                 <ul>
-                    {cards.map(card => {    /*.sort((prev,next)=>prev.id - next.id)*/
+                    {cards.map(card => {   
                         return <li key={card.id}><img src={card.imageURL} alt={card.title} /></li>
                     })}
                 </ul> 
