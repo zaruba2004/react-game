@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './mainGame.css';
 import './modal.css';
 import CardAnswerSound from '../sounds/answer.mp3';
@@ -25,7 +25,12 @@ export default function MainGame(props) {
       ])
 
       const [soundsVolume, setSoundsVolume] = useState(1);
-      const onChnageVolumeHandler = () => {
+      const [counter, setCounter] = useState(0);
+      const [state, setState] = useState (    
+        {isOpenModal: false, isOpenButton: false, isOpenButtons: true}
+    )
+
+    function onChnageVolumeHandler() {
         setSoundsVolume(prev => (prev ? 0 : 1));
       };
 
@@ -36,16 +41,15 @@ export default function MainGame(props) {
           });
           sound.play() ;
       };
-
-      const [counter, setCounter] = useState(0);
-      const [state, setState] = useState (    
-        {isOpenModal: false, isOpenButton: false, isOpenButtons: true}
-    )
-          
-      function clickOneButton(arr){ 
+      
+      function allButtonClick() {
         soundPlay(CardClickSound); 
         setCounter(counter + 1);
-        props.counters(counter+1); 
+        props.counters(counter+1);
+      }
+          
+      function clickOneButton(arr){ 
+        allButtonClick();
         let a = [];
         let b = [];
         let c = [];
@@ -61,10 +65,8 @@ export default function MainGame(props) {
         return arr;
       }
 
-      function clickTwoButton(arr){ 
-        soundPlay(CardClickSound); 
-        setCounter(counter + 1);
-        props.counters(counter+1);
+      function clickTwoButton(arr){
+        allButtonClick();
         let a = [];
         let b = [];
         let c = [];
@@ -81,9 +83,7 @@ export default function MainGame(props) {
       }
 
       function clickTreeButton(arr){ 
-        soundPlay(CardClickSound);  
-        setCounter(counter + 1); 
-        props.counters(counter+1);
+        allButtonClick();
         let a = [];
         let b = [];
         let c = [];
@@ -115,6 +115,14 @@ export default function MainGame(props) {
         setState({isOpenModal: false, isOpenButton: false, isOpenButtons: true});
         props.callbackState({isOpenModal: false});
       }
+     
+      // useEffect(() => {
+      //   const onKeypress = e => console.log(e);      
+      //   document.addEventListener('keypress', onKeypress);      
+      //   return () => {
+      //     document.removeEventListener('keypress', onKeypress);
+      //   };
+      // }, []);
 
     return (
         <div className="playingField">

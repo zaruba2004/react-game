@@ -10,7 +10,7 @@ function App() {
   function callback(id){ 
     setNewCounter(id);
   } 
-  const callbackState = (state) => {
+  function callbackState(state) {
     setNewState(state)
   }
   
