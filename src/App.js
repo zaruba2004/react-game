@@ -33,9 +33,20 @@ function App() {
           }
           
         </p>
-          </div>        
-        <MainGame counters={callback} callbackState={callbackState}/>
+          </div>    
       </header>
+      <MainGame counters={callback} callbackState={callbackState}/>
+      <footer className="footerFeald">
+            <div className="git">
+                <a href="https://github.com/zaruba2004" target="_blank" rel="noreferrer"> @zaruba2004</a>
+            </div>
+            <div className="rss">
+                <a className="rssLink" href={'https://rs.school/js/'} target="_blank" rel="noreferrer">
+                    <img className="rssLogo" src="https://rs.school/images/rs_school_js.svg" alt="rsschhol" />
+                    <span>/ 2021</span>
+                </a>
+            </div>
+        </footer>
     </div>
   );
 }

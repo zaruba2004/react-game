@@ -23,9 +23,16 @@ export default function MainGame(props) {
         {id: 14, imageURL: './images/KH.png', title: "KH"},
         {id: 15, imageURL: './images/KS.png', title: "KS"}
       ])
+
+      const [soundsVolume, setSoundsVolume] = useState(1);
+      const onChnageVolumeHandler = () => {
+        setSoundsVolume(prev => (prev ? 0 : 1));
+      };
+
       function soundPlay(src){
         const sound = new Howl({
-            src
+            src,
+            volume: `${soundsVolume}`,
           });
           sound.play() ;
       };
@@ -111,6 +118,9 @@ export default function MainGame(props) {
 
     return (
         <div className="playingField">
+          <button className='soundButton' onClick={onChnageVolumeHandler}>
+					  {soundsVolume ? '\u{1F509}' : '\u{1F507}'}
+				  </button>
             <div className="cardsField">  
                 <ul>
                     {cards.map(card => {   
