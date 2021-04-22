@@ -34,7 +34,7 @@ export default function MainGame(props) {
       const [state, setState] = useState (    
         {isOpenModal: false, isOpenButton: false, isOpenButtons: true}
     )
-      
+          
       function clickOneButton(arr){ 
         soundPlay(CardClickSound); 
         setCounter(counter + 1);
@@ -97,10 +97,16 @@ export default function MainGame(props) {
         setState({isOpenModal: false, isOpenButton: true, isOpenButtons: false, });        
       }
 
-      function answeButton(){
+      function answeButton(){        
         setState({isOpenModal: true});
+        props.callbackState({isOpenModal: true});
         props.counters(counter);
         soundPlay(CardAnswerSound);
+      }
+
+      function replayGame() {
+        setState({isOpenModal: false, isOpenButton: false, isOpenButtons: true});
+        props.callbackState({isOpenModal: false});
       }
 
     return (
@@ -124,7 +130,7 @@ export default function MainGame(props) {
                         <div className='modal-body'>
                             <h1>Это ваша карта?</h1>
                             <img className='ansverCard' src={cards[7].imageURL} alt={cards[7].title} />
-                            <button className='restartButton' onClick={()=>setState({isOpenModal: false, isOpenButton: false, isOpenButtons: true})}>Да, попробовать заново</button>
+                            <button className='restartButton' onClick={()=>replayGame()}>Да, попробовать заново</button>
                         </div>            
                     </div>)}
                 </div>

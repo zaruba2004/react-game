@@ -4,10 +4,15 @@ import MainGame from './mainGame/mainGame'
 
 function App() {
   const [newCounter, setNewCounter] = useState(0);
+  const [newState, setNewState] = useState(    
+    {isOpenModal: false}
+);
   function callback(id){ 
     setNewCounter(id);
   } 
-  console.log(newCounter);
+  const callbackState = (state) => {
+    setNewState(state)
+  }
   
   return (
     <div className="App">
@@ -22,12 +27,14 @@ function App() {
             ? "Нажмите кнопку в последний раз :)"
             : newCounter == 3
             ? "Нажмите на кнопку 'Ответ'"
+            : newState.isOpenModal == true
+            ? "Вам понравилось? :)"
             : "Правила игры: Перед вами 15 карт, разделенных на 3 колоды. Загадайте любую карту, а я постараюсь ее угадать. Для того, чтобы мне это сделать, мне нужно знать, в какой колоде ваша карта. Когда будете готовы, жмите кнопку снизу."
           }
           
         </p>
           </div>        
-        <MainGame counters={callback}/>
+        <MainGame counters={callback} callbackState={callbackState}/>
       </header>
     </div>
   );
